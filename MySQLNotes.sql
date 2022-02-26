@@ -41,5 +41,22 @@ CREATE TABLE cats
     name VARCHAR(100),
     age INT
   );
+
+-- To check if the table was created successfully
+SHOW TABLES;
+
+-- To describe the syntax of the made table
+SHOW COLUMNS FROM tablename;
+-- OR
+DESC tablename;
+
+
+-- To drop a table
+DROP TABLE <tablename>;
+
+-- Example
+DROP TABLE cats;
+
+
   
   
