@@ -57,6 +57,24 @@ DROP TABLE <tablename>;
 -- Example
 DROP TABLE cats;
 
+-- Inserting DATA into the TABLE
+INSERT INTO table_name(column_name) VALUES(data);
 
-  
+--Example
+INSERT INTO cats(name, age) VALUES ('Jetson', 7);
+
+-- Quick Intro to how to VIEW INSERTED DATA
+SELECT * FROM table_name;
+
+-- To INSERT MULTIPLE data
+INSERT INTO table_name 
+            (column_name, column_name) 
+VALUES      (value, value), 
+            (value, value), 
+            (value, value);
+            
+-- To view WARNINGS
+SHOW WARNINGS;
+
+
   
