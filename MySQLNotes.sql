@@ -76,5 +76,15 @@ VALUES      (value, value),
 -- To view WARNINGS
 SHOW WARNINGS;
 
-
+-- NULL and NOT NULL
+-- So basically here NULL means not defined, by default the NULL in any table is yes i.e. we can have queries where we do not specify a column in a table
+-- hence that data value will be set to null. To avoid this we use NOT NULL while initializing the table. Below is an Example
+CREATE TABLE cats2
+  (
+    name VARCHAR(100) NOT NULL,
+    age INT NOT NULL
+  );
   
+-- Now try inserting an ageless cat will give a warning:
+
+INSERT INTO cats2(name) VALUES('Texas');
