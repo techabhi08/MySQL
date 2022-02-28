@@ -88,3 +88,44 @@ CREATE TABLE cats2
 -- Now try inserting an ageless cat will give a warning:
 
 INSERT INTO cats2(name) VALUES('Texas');
+
+--Setting up DEFAULT VALUES 
+CREATE TABLE cats3
+  (
+    name VARCHAR(20) DEFAULT 'no name provided',
+    age INT DEFAULT 99
+  );
+
+-- Combining NOT NULL and DEFAULT
+-- This is not reduntant as even if we have provided default values, we can set the name field to NULL manually if NOT NULL is not specified.
+CREATE TABLE cats4
+  (
+    name VARCHAR(20) NOT NULL DEFAULT 'unnamed',
+    age INT NOT NULL DEFAULT 99
+  );
+  
+ -- Describing Table with PRIMARY KEY
+ CREATE TABLE unique_cats (
+    cat_id INT NOT NULL,
+    name VARCHAR(100),
+    age INT,
+    PRIMARY KEY (cat_id)
+ );
+  
+ -- Insert some new cats:
+
+INSERT INTO unique_cats(cat_id, name, age) VALUES(1, 'Fred', 23);
+
+-- To auto increment the value of the primary key we write:
+CREATE TABLE unique_cats2 (
+    cat_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100),
+    age INT,
+    PRIMARY KEY (cat_id)
+);
+
+-- INSERT a couple new cats:
+
+INSERT INTO unique_cats2(name, age) VALUES('Skippy', 4);
+
+
