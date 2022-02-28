@@ -25,7 +25,7 @@ USE dog_walking_app;
 -- To see which database we are using
 SELECT database();
 
--- What are Tables?
+--  What are Tables?
 -- Tables are a collection of related data held in a structural format within a databse;
 
 -- Creating a New Table
@@ -128,4 +128,22 @@ CREATE TABLE unique_cats2 (
 
 INSERT INTO unique_cats2(name, age) VALUES('Skippy', 4);
 
+
+
+-- CRUD Commands
+
+-- SELECT statements
+SELECT * FROM cats; /* means selecting all the columns present in the table */
+
+SELECT name FROM cats; 
+
+SELECT name, age FROM cats; 
+
+SELECT cat_id, name, age FROM cats; 
+
+-- WHERE command
+-- T0 select a particular entry or column we use WHERE command
+
+-- Example of selecting by age
+SELECT * FROM cats WHERE age=4;
 
