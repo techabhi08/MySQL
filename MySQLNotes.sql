@@ -207,4 +207,10 @@ SELECT * FROM cats WHERE breed='Maine Coon';
 
 -- 🟢Intro to DELETE command
 
+DELETE FROM cats WHERE name='Egg';
+SELECT * FROM cats;
+SELECT * FROM cats WHERE name='egg';
+
+DELETE FROM cats; /*This will delete all the data present in the table but the table description would be present.*/
+
 
