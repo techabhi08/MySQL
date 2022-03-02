@@ -214,3 +214,15 @@ SELECT * FROM cats WHERE name='egg';
 DELETE FROM cats; /*This will delete all the data present in the table but the table description would be present.*/
 
 
+-- 🟥 World of String Functions
+-- We can run command from files instead of writing them manually in the command line. For this we first need to create a new file in our folder,
+-- then we can write the query or commands inside that file and save the file. To run this file we first need to go to corresct folder.
+-- We check this using ls command. If the file is visible then we can run the mysql-ctl cli command to run our command line.
+
+-- To run the command of file we use 
+source filename
+
+
+
+
+
