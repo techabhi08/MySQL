@@ -343,5 +343,10 @@ FROM books;
 -- The REPLACE() function, as well as the other string functions, 
 -- only change the query output, they don't affect the actual data in the database.
 
-
+-- 🟢Using REVERSE
+SELECT REVERSE('Hello World'); --Output: dlroW olleH
+SELECT REVERSE('meow meow'); --Output: woem woem
+SELECT REVERSE(author_fname) FROM books;
+SELECT CONCAT('woof', REVERSE('woof'));
+SELECT CONCAT(author_fname, REVERSE(author_fname)) FROM books;
 
