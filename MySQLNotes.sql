@@ -222,7 +222,126 @@ DELETE FROM cats; /*This will delete all the data present in the table but the t
 -- To run the command of file we use 
 source filename
 
+-- 🟢Creating the book_data.sql file first
+-- We also make one book_shop database where we will insert our tables.
+CREATE DATABASE book_shop;
+use book_shop;
 
+-- Writing in  the book_data.sql file
+CREATE TABLE books 
+	(
+		book_id INT NOT NULL AUTO_INCREMENT,
+		title VARCHAR(100),
+		author_fname VARCHAR(100),
+		author_lname VARCHAR(100),
+		released_year INT,
+		stock_quantity INT,
+		pages INT,
+		PRIMARY KEY(book_id)
+	);
+ 
+INSERT INTO books (title, author_fname, author_lname, released_year, stock_quantity, pages)
+VALUES
+('The Namesake', 'Jhumpa', 'Lahiri', 2003, 32, 291),
+('Norse Mythology', 'Neil', 'Gaiman',2016, 43, 304),
+('American Gods', 'Neil', 'Gaiman', 2001, 12, 465),
+('Interpreter of Maladies', 'Jhumpa', 'Lahiri', 1996, 97, 198),
+('A Hologram for the King: A Novel', 'Dave', 'Eggers', 2012, 154, 352),
+('The Circle', 'Dave', 'Eggers', 2013, 26, 504),
+('The Amazing Adventures of Kavalier & Clay', 'Michael', 'Chabon', 2000, 68, 634),
+('Just Kids', 'Patti', 'Smith', 2010, 55, 304),
+('A Heartbreaking Work of Staggering Genius', 'Dave', 'Eggers', 2001, 104, 437),
+('Coraline', 'Neil', 'Gaiman', 2003, 100, 208),
+('What We Talk About When We Talk About Love: Stories', 'Raymond', 'Carver', 1981, 23, 176),
+("Where I'm Calling From: Selected Stories", 'Raymond', 'Carver', 1989, 12, 526),
+('White Noise', 'Don', 'DeLillo', 1985, 49, 320),
+('Cannery Row', 'John', 'Steinbeck', 1945, 95, 181),
+('Oblivion: Stories', 'David', 'Foster Wallace', 2004, 172, 329),
+('Consider the Lobster', 'David', 'Foster Wallace', 2005, 92, 343);
+
+-- Running the book_data.sql file in the terminal
+source book_data.sql
+
+-- 🟢Looking into CONCAT
+-- How basically concat works:
+CONCAT(x,y,z) -- from slides
+CONCAT(column, anotherColumn) --from slides
+CONCAT(author_fname, author_lname)
+CONCAT(column, 'text', anotherColumn, 'more text')
+CONCAT(author_fname, ' ', author_lname)
+CONCAT(author_fname, author_lname); --invalid syntax
+ 
+-- Actually we need to write something like this. We need to make use of SELECT command, even more specifically we should include table name as given below.
+SELECT CONCAT('Hello', 'World');
+SELECT CONCAT('Hello', '...', 'World');
+ 
+--  This is how we use CONCAT properly.
+SELECT CONCAT(author_fname, ' ', author_lname) FROM books; -- This won't change our actual database but will only show as the result.
+ 
+SELECT
+  CONCAT(author_fname, ' ', author_lname)
+  AS 'full name'
+FROM books;
+ 
+SELECT author_fname AS first, author_lname AS last, 
+  CONCAT(author_fname, ' ', author_lname) AS full
+FROM books;
+ 
+SELECT author_fname AS first, author_lname AS last, 
+  CONCAT(author_fname, ', ', author_lname) AS full
+FROM books;
+ 
+-- 🟢Use of CONCAT_WS 
+SELECT CONCAT(title, '-', author_fname, '-', author_lname) FROM books;
+--  This is same as below. We can make use of CONCAT_WS which means CONCAT WITH SEPERATOR. The first argument will specify the separaotr.
+SELECT 
+    CONCAT_WS(' - ', title, author_fname, author_lname) 
+FROM books;
+
+
+-- 🟢Introducing SUBSTRING
+SELECT SUBSTRING('Hello World', 1, 4); --Output: Hell
+SELECT SUBSTRING('Hello World', 7); -- Output: World
+SELECT SUBSTRING('Hello World', 3, 8); -- Output: llo Wo
+SELECT SUBSTRING('Hello World', 3); -- Output: llo World
+SELECT SUBSTRING('Hello World', -3); -- Output rld
+SELECT SUBSTRING('Hello World', -7); -- Output: o World
+
+SELECT title FROM books;
+SELECT SUBSTRING("Where I'm Calling From: Selected Stories", 1, 10);
+SELECT SUBSTRING(title, 1, 10) FROM books;
+SELECT SUBSTRING(title, 1, 10) AS 'short title' FROM books;
+SELECT SUBSTR(title, 1, 10) AS 'short title' FROM books; -- SUBSTRING can also be used as SUBSTR
+
+-- 🟢Using CONCAT and SUBSTRING together
+SELECT CONCAT
+    (
+        SUBSTRING(title, 1, 10),
+        '...'
+    ) AS 'short title'
+FROM books;
+
+
+-- 🟢Introducing REPLACE
+SELECT REPLACE('Hello World', 'Hell', '%$#@'); --Output: %$#@o World
+SELECT REPLACE('Hello World', 'l', '7'); -- Output: He77o Wor7d
+SELECT REPLACE('Hello World', 'o', '0'); 
+SELECT REPLACE('HellO World', 'o', '*'); -- This is case sensitive hence will only replace small o
+ 
+SELECT REPLACE('cheese bread coffee milk', ' ', ' and ');
+ 
+SELECT REPLACE(title, 'e ', '3') FROM books;
+
+SELECT
+    SUBSTRING(REPLACE(title, 'e', '3'), 1, 10)
+FROM books;
+ 
+SELECT
+    SUBSTRING(REPLACE(title, 'e', '3'), 1, 10) AS 'weird string'
+FROM books;
+ 
+-- The REPLACE() function, as well as the other string functions, 
+-- only change the query output, they don't affect the actual data in the database.
 
 
 
