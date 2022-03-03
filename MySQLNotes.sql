@@ -455,7 +455,23 @@ SELECT title FROM books WHERE title LIKE '%the%';
 
 
 
+-- 🟢More Wildcards
 
+SELECT title, stock_quantity FROM books; 
+
+-- Underscores are a way to represent 1 character, hence this will show all entries 4 digit long as we used 4 _.
+SELECT title, stock_quantity FROM books WHERE stock_quantity LIKE '____'; 
+SELECT title, stock_quantity FROM books WHERE stock_quantity LIKE '__'; 
+
+(235)234-0987 LIKE '(___)___-____' -- This is how a number of US can be searched.
+
+SELECT title FROM books;
+
+-- Using backslash helps to find names that themselves include % or _ or any wildcard. 
+-- Hence here we are finding names that contains anything before or after but there is a % sign present in the name.
+SELECT title FROM books WHERE title LIKE '%\%%' 
+ 
+SELECT title FROM books WHERE title LIKE '%\_%'
 
 
 
