@@ -417,22 +417,58 @@ SELECT title, released_year, pages FROM books ORDER BY released_year;
 SELECT title, pages FROM books ORDER BY released_year;
 
 
-SELECT title, author_fname, author_lname 
-FROM books ORDER BY 2;
- 
-SELECT title, author_fname, author_lname 
-FROM books ORDER BY 3;
- 
-SELECT title, author_fname, author_lname 
-FROM books ORDER BY 1;
- 
-SELECT title, author_fname, author_lname 
-FROM books ORDER BY 1 DESC;
- 
-SELECT author_lname, title
-FROM books ORDER BY 2;
+SELECT title, author_fname, author_lname FROM books ORDER BY 2; -- 2 is just a short form to represent the author_fname so that we do not need to write the name full name again.
+SELECT title, author_fname, author_lname FROM books ORDER BY 3;
+SELECT title, author_fname, author_lname FROM books ORDER BY 1;
+SELECT title, author_fname, author_lname FROM books ORDER BY 1 DESC;
+SELECT author_lname, titleFROM books ORDER BY 2;
+SELECT author_fname, author_lname FROM books ORDER BY author_lname, author_fname;
 
-SELECT author_fname, author_lname FROM books 
-ORDER BY author_lname, author_fname;
+
+
+-- 🟢Using LIMIT
+SELECT title FROM books LIMIT 3;
+SELECT title FROM books LIMIT 1;
+SELECT title FROM books LIMIT 10;
+SELECT * FROM books LIMIT 1;
+ 
+SELECT title, released_year FROM books RDER BY released_year DESC LIMIT 5;
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 1;
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 14;
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 0,5; -- This syntax uses starting index and then the number of entries to be printed.
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 0,3;
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 1,3;
+SELECT title, released_year FROM books ORDER BY released_year DESC LIMIT 10,1;
+ 
+SELECT * FROM tbl LIMIT 95,18446744073709551615; -- THis large number is only used to print out all the values as we know the rows will be anyways less than this.
+SELECT title FROM books LIMIT 5;
+SELECT title FROM books LIMIT 5, 123219476457;
+SELECT title FROM books LIMIT 5, 50;
+
+
+-- 🟢Better searches with LIKE
+SELECT title, author_fname FROM books WHERE author_fname LIKE '%da%'; -- searches authors_fname that start with anything and end with anything but has 'da' in the name somewhere
+SELECT title, author_fname FROM books WHERE author_fname LIKE 'da%'; -- searches author_fname which starts with 'da' and then has anything
+SELECT title FROM books WHERE  title LIKE 'the';
+SELECT title FROM books WHERE  title LIKE '%the';
+SELECT title FROM books WHERE title LIKE '%the%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
