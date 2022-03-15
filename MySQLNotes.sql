@@ -574,14 +574,25 @@ SELECT * FROM dogs;
 
 -- 🟢DECIMAL
 
-CREATE TABLE items(price DECIMAL(5,2)); 
-INSERT INTO items(price) VALUES(7);
+CREATE TABLE items(price DECIMAL(5,2)); --This 5 represents the total number of digits that can be included while 2 represents digits to the shown after decimal
+INSERT INTO items(price) VALUES(7); 
 INSERT INTO items(price) VALUES(7987654);
 INSERT INTO items(price) VALUES(34.88);
 INSERT INTO items(price) VALUES(298.9999);
 INSERT INTO items(price) VALUES(1.9999);
  
 SELECT * FROM items;
+
+
+
+-- 🟢FLOAT and DOUBLE
+CREATE TABLE thingies (price FLOAT);
+INSERT INTO thingies(price) VALUES (88.45);
+SELECT * FROM thingies;
+INSERT INTO thingies(price) VALUES (8877.45);
+SELECT * FROM thingies;
+INSERT INTO thingies(price) VALUES (8877665544.45);
+SELECT * FROM thingies;
 
 
 
