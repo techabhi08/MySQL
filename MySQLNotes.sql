@@ -1356,3 +1356,87 @@ INNER JOIN likes
     ON users.id = likes.user_id 
 GROUP  BY likes.user_id 
 HAVING num_likes = (SELECT COUNT(*) FROM photos); 
+
+-- 🟢Introducing Node
+-- 🟢5 Minute Node Crash Course
+
+-- Print "HELLO WORLD" 500 times using Node
+
+for(var i = 0; i < 500; i++){
+  console.log("HELLO WORLD!");
+}
+
+-- Execute file with:
+
+node filename.js 
+
+-- STEP 2: Use Faker!
+-- // Print a random email
+
+console.log(faker.internet.email());
+
+-- // Print a random past date
+
+console.log(faker.date.past()); 
+
+-- // Print a random city
+
+console.log(faker.address.city()); 
+
+-- // We can define a new function
+
+function generateAddress(){
+  console.log(faker.address.streetAddress());
+  console.log(faker.address.city());
+  console.log(faker.address.state());
+}
+
+-- // And then execute that function:
+
+generateAddress(); 
+
+-- 🟢Connecting Node to MySQL
+-- 🟢Documentation for the MySQL Node Package: 
+
+-- 🟢Step 1: Install the MySQL Node Package
+npm install mysql 
+
+
+-- 🟢Step 2: Connect to Database*
+var mysql = require('mysql');
+ 
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',     // your root username
+  database : 'join_us'   // the name of your db
+});
+
+
+-- 🟢Step 3: Run Queries
+-- 🟢Running a super simple SQL query like:
+
+SELECT 1 + 1; 
+
+-- 🟢Using the MySQL Node Package:
+
+connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+   if (error) throw error;
+   console.log('The solution is: ', results[0].solution);
+});
+
+
+-- 🟢Another sample query, this time selecting 3 things:
+
+var q = 'SELECT CURTIME() as time, CURDATE() as date, NOW() as now';
+connection.query(q, function (error, results, fields) {
+  if (error) throw error;
+  console.log(results[0].time);
+  console.log(results[0].date);
+  console.log(results[0].now);
+});
+
+-- 🟢The equivalent SQL query:
+
+SELECT CURTIME() as time, CURDATE() as date, NOW() as now;
+
+
