@@ -1439,4 +1439,62 @@ connection.query(q, function (error, results, fields) {
 
 SELECT CURTIME() as time, CURDATE() as date, NOW() as now;
 
+-- 🟢Creating Our Users Table
+
+-- 🟢Simple SQL To Create The Users Table
+
+CREATE TABLE users (
+    email VARCHAR(255) PRIMARY KEY,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- 🟢Selecting Using Node
+
+-- 🟢Insert users (from command line):
+
+INSERT INTO users (email) VALUES('Katie34@yahoo.com'), ('Tunde@gmail.com');
+
+-- 🟢Check that users are added:
+
+SELECT * FROM users;
+
+-- 🟢To SELECT all users from database:
+
+var q = 'SELECT * FROM users ';
+connection.query(q, function (error, results, fields) {
+  if (error) throw error;
+  console.log(results);
+});
+
+-- 🟢To count the number of users in the database:
+
+var q = 'SELECT COUNT(*) AS total FROM users ';
+connection.query(q, function (error, results, fields) {
+  if (error) throw error;
+  console.log(results[0].total);
+});
+
+
+-- 🟢Inserting Data Using Node
+-- 🟢Approach #1
+
+var q = 'INSERT INTO users (email) VALUES ("rusty_the_dog@gmail.com")';
+ 
+connection.query(q, function (error, results, fields) {
+  if (error) throw error;
+  console.log(results);
+});
+
+
+-- 🟢An easier approach that allows for dynamic data
+
+var person = {
+    email: faker.internet.email(),
+    created_at: faker.date.past()
+};
+ 
+var end_result = connection.query('INSERT INTO users SET ?', person, function(err, result) {
+  if (err) throw err;
+  console.log(result);
+});
 
