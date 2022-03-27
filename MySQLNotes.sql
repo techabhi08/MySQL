@@ -1574,3 +1574,27 @@ app.get("/", function(req, res){
  res.send(msg);
  });
 });
+
+-- 🟢Adding EJS Templates
+
+<h1>JOIN US</h1>
+ 
+<p class="lead">Enter your email to join <strong><%= count %></strong> 
+others on our waitlist. We are 100% not a cult. </p>
+ 
+<form method="POST" action='/register'>
+ <input type="text" class="form" name="email" placeholder="Enter Your Email">
+ <button>Join Now</button>
+</form>
+
+-- 🟢Connecting the Form
+-- The '/register' post route:
+
+app.post('/register', function(req,res){
+ var person = {email: req.body.email};
+ connection.query('INSERT INTO users SET ?', person, function(err, result) {
+ console.log(err);
+ console.log(result);
+ res.redirect("/");
+ });
+});
